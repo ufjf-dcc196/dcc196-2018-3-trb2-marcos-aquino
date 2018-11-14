@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">Trabalho_DCC196</string>
+
+    // main activity
+    <string name="novo_evento">Inscrever um Evento</string>
+    <string name="novo_participante">Quero Participar!</string>
+    <string name="semana_da_computacao">Semana da Computação</string>
+    <string name="eventos">Eventos confirmados:</string>
+    <string name="participantes">Inscritos:</string>
+
+
+    // cadastro de evento
+    <string name="titulo_evento">Nome do evento:</string>
+    <string name="data_evento">Data:</string>
+    <string name="horario_evento">Horário:</string>
+    <string name="facilitador_evento">Facilitador:</string>
+    <string name="descricao_evento">Descrição:</string>
+
+    <string name="edt_titulo">Digite o título do evento</string>
+    <string name="edt_data">dd/mm/aaaa</string>
+    <string name="edt_horario">00:00</string>
+    <string name="edt_facilitador"> </string>
+    <string name="edt_descricao">Digite a descrição do evento</string>
+
+    <string name="cadastrar_evento">Cadastrar evento</string>
+    <string name="cancela_cadastro_evento">Cancelar</string>
+
+    // cadastro de participante
+    <string name="nome_participante">Nome:</string>
+    <string name="email_participante">Contato:</string>
+    <string name="cpf_participante">CPF:</string>
+
+    <string name="edt_nome">Digite o nome completo</string>
+    <string name="edt_email">exemplo@exemplo.com</string>
+    <string name="edt_cpf">xxx.xxx.xxx-xx:</string>
+
+    <string name="cadastrar_participante">Confirmar inscrição</string>
+    <string name="cancela_cadastro_participante">Cancelar</string>
+
+
+    // dados de participante
+    <string name="editar_dados">Editar dados</string>
+    <string name="participante_inscricao">Faça sua inscrição!</string>
+
+    <string name="dados_nome_participante">Nome completo</string>
+    <string name="dados_email_participante">fulano@gmail.com</string>
+    <string name="dados_cpf_participante">xxx.xxx.xxx-xx</string>
+
+
+    // dados do evento
+    <string name="inscritos_evento">Inscritos:</string>
+
+    <string name="editar_evento">EDITAR</string>
+    <string name="voltar">X</string>
+    // obs.:utilizadas strings já criadas em cadastro de evento
+
+
+    // Lista de eventos
+    <string name="lista_evento">Eventos Disponíveis</string>
+
+
+    // Edição de Dados do Inscrito
+    <string name="confirmar_edicao">Confirmar Alterações</string>
+    <string name="cancelar_edicao">Cancelar</string>
+
+    <string name="edicao_inscrito">Edite os dados do inscrito</string>
+
+
+    // Edição de Dados do Evento
+    <string name="edicao_evento">Edite os dados do evento</string>
+
+    <string name="confirma_inscricao">Confirma Inscrição</string>
+
+
+</resources>
