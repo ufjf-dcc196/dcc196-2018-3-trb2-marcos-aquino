@@ -15,6 +15,7 @@ public class DadosOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL( ScriptDados.getCreateTableEventos() );
+        db.execSQL( ScriptDados.getCreateTableInscritos() );
 
     }
 
