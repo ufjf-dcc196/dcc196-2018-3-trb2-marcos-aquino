@@ -73,6 +73,9 @@
     <string name="message_conexao_criada">Conexao criada com sucesso!</string>
     <string name="action_ok">Ok</string>
     <string name="title_erro">Erro</string>
+    <string name="title_atencao">Atenção!</string>
+    <string name="message_campos_nao_preenchidos">Existem campos não preenchidos</string>
+    <string name="lbl_ok">Ok</string>
 
 
 </resources>
