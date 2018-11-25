@@ -7,14 +7,14 @@ public class ScriptDados {
         StringBuilder sql = new StringBuilder();
 
 
-        sql.append(" CREATE TABLE IF NOT EXISTS EVENTOS( ");
+        sql.append("CREATE TABLE Eventos( ");
 
         sql.append("CODIGO INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, ");
-        sql.append("NOME VARCHAR (250) NOT NULL DEFAULT, ");
-        sql.append("DATA DATE NOT NULL DEFAULT, ");
-        sql.append("HORARIO TIME NOT NULL DEFAULT, ");
-        sql.append("FACILITADOR VARCHAR (250) NOT NULL DEFAULT, ");
-        sql.append("DESCRICAO VARCHAR (250) NOT NULL DEFAULT, ) ");
+        sql.append("NOME VARCHAR(250), ");
+        sql.append("DATA DATE, ");
+        sql.append("HORARIO TIME, ");
+        sql.append("FACILITADOR VARCHAR(250), ");
+        sql.append("DESCRICAO VARCHAR(250) ) ");
 
         return sql.toString();
 

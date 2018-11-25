@@ -1,8 +1,13 @@
 package marcos_matheus.trabalho_dcc196;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +19,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import marcos_matheus.trabalho_dcc196.database.DadosOpenHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     public static final int REQUEST_PARTICIPANTE = 1;
@@ -24,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView lstEventos;
     private RecyclerView lstInscritos;
+
+    private SQLiteDatabase conexao;   // cria conexão com o banco
+
+    private DadosOpenHelper dadosOpenHelper;
+
+    private ConstraintLayout activityMain;
 
     public static List<Inscrito> inscritos = new ArrayList<Inscrito>(){{
 
@@ -50,22 +63,14 @@ public class MainActivity extends AppCompatActivity {
         add(ev4);
 
         ev1.getInscritos().add(inscritos.get(1));
-
         ev2.getInscritos().add(inscritos.get(1));
-
         ev3.getInscritos().add(inscritos.get(1));
-
         ev4.getInscritos().add(inscritos.get(1));
 
         inscritos.get(1).getEventos().add(ev1);
-
         inscritos.get(1).getEventos().add(ev1);
-
         inscritos.get(1).getEventos().add(ev1);
-
         inscritos.get(1).getEventos().add(ev1);
-
-
     }};
 
 
@@ -73,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        activityMain = (ConstraintLayout) findViewById(R.id.activityMain);
+
+        criarConexao();
 
         btNovoEvento = (Button) findViewById(R.id.btNovoEvento);
         btNovoEvento.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
 
         lstInscritos = (RecyclerView) findViewById(R.id.lstInscritos);
@@ -140,6 +148,30 @@ public class MainActivity extends AppCompatActivity {
                 eventoControle.notifyItemRemoved(position);
             }
         });
+    }
+
+
+    private void criarConexao(){
+
+        try {
+
+            dadosOpenHelper = new DadosOpenHelper(this);
+
+            conexao = dadosOpenHelper.getWritableDatabase();
+
+            Snackbar.make(activityMain, R.string.message_conexao_criada, Snackbar.LENGTH_SHORT)
+                    .setAction(getString(R.string.action_ok), null).show();
+
+        }catch (SQLException ex){
+
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            dlg.setTitle(getString(R.string.title_erro));
+            dlg.setMessage(ex.getMessage());
+            dlg.setNeutralButton(getString(R.string.action_ok), null);
+            dlg.show();
+
+        }
+
     }
 
     @Override

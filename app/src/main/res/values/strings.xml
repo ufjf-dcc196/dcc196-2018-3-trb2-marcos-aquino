@@ -70,6 +70,9 @@
     <string name="edicao_evento">Edite os dados do evento</string>
 
     <string name="confirma_inscricao">Confirma Inscrição</string>
+    <string name="message_conexao_criada">Conexao criada com sucesso!</string>
+    <string name="action_ok">Ok</string>
+    <string name="title_erro">Erro</string>
 
 
 </resources>
