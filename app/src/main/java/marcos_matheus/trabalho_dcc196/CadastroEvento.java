@@ -57,8 +57,7 @@ public class CadastroEvento extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent cancela = new Intent(CadastroEvento.this, MainActivity.class);
-                startActivity(cancela);
+                finish();
             }
         });
 
@@ -66,23 +65,24 @@ public class CadastroEvento extends AppCompatActivity {
         btCadastrarEvento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent resultadoEvento = new Intent();
 
-                String titulo = edtTituloEvento.getText().toString();
-                String descricao = edtDescricaoEvento.getText().toString();
-                String facilitador = edtFacilitadorEvento.getText().toString();
-                String data = edtDataEvento.getText().toString();
-                String hora = edtHorarioEvento.getText().toString();
+//                String titulo = edtTituloEvento.getText().toString();
+//                String descricao = edtDescricaoEvento.getText().toString();
+//                String facilitador = edtFacilitadorEvento.getText().toString();
+//                String data = edtDataEvento.getText().toString();
+//                String hora = edtHorarioEvento.getText().toString();
 
-                if(validaCampos()) {
-                    Toast.makeText(getApplicationContext(), "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                //if(validaCampos()) {
+                  //  Toast.makeText(getApplicationContext(), "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                     //finish();
-                }
-                else {
+                //}
+                //else {
                     confirmarCadastroEvento();
-                    //Toast.makeText(getApplicationContext(), "Evento cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Evento cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
                     finish();
-                }
+                //}
             }
         });
 
@@ -119,11 +119,12 @@ public class CadastroEvento extends AppCompatActivity {
 
         evento = new Evento();
 
-        if(validaCampos() == false){
+        if(!validaCampos()){
 
             try {
 
                 eventoRepositorio.inserirEvento(evento);
+                //finish();
 
             }catch (SQLException ex){
 
@@ -194,5 +195,4 @@ public class CadastroEvento extends AppCompatActivity {
         boolean resultado = ( TextUtils.isEmpty(valor) || valor.trim().isEmpty() );
         return resultado;
     }
-
 }
