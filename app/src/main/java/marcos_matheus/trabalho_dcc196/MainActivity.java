@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 
+
         lstEventos = (RecyclerView) findViewById(R.id.lstEventos);
         lstEventos.setLayoutManager(new LinearLayoutManager(this));
 
@@ -182,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
 //        });
     }
 
-
     private void criarConexao(){
 
         try {
@@ -206,20 +206,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void cadastrarEventro(View view){
+
+        Intent it = new Intent(MainActivity.this, CadastroEvento.class);
+
+        startActivityForResult(it, 0);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == MainActivity.REQUEST_PARTICIPANTE && resultCode == Activity.RESULT_OK && data != null) {
-            Bundle bundleResultadoParticipante = data.getExtras();
+        List<Evento> dadosEvento = eventoRepositorio.buscarEventos();
+        eventoAdapter = new EventoAdapter(dadosEvento);
+        lstEventos.setAdapter(eventoAdapter);
 
-            Inscrito in = (Inscrito) bundleResultadoParticipante.getSerializable("participante");
-
-        } else if(requestCode == MainActivity.REQUEST_EVENTO && resultCode == Activity.RESULT_OK && data != null) {
-            Bundle bundleResultadoEvento = data.getExtras();
-
-            Evento ev = (Evento) bundleResultadoEvento.getSerializable("evento");
-
-        }
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if(requestCode == MainActivity.REQUEST_PARTICIPANTE && resultCode == Activity.RESULT_OK && data != null) {
+//            Bundle bundleResultadoParticipante = data.getExtras();
+//
+//            Inscrito in = (Inscrito) bundleResultadoParticipante.getSerializable("participante");
+//
+//        } else if(requestCode == MainActivity.REQUEST_EVENTO && resultCode == Activity.RESULT_OK && data != null) {
+//            Bundle bundleResultadoEvento = data.getExtras();
+//
+//            Evento ev = (Evento) bundleResultadoEvento.getSerializable("evento");
+//
+//        }
     }
 }
