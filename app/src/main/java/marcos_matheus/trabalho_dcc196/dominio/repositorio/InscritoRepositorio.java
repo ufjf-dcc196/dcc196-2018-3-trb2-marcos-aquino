@@ -99,7 +99,7 @@ public class InscritoRepositorio {
 
             Inscrito in = new Inscrito();
 
-            in.codigo = resultado.getInt( resultado.getColumnIndexOrThrow("CODIGO") );
+//            in.codigo = resultado.getInt( resultado.getColumnIndexOrThrow("CODIGO") );
             in.nome = resultado.getString( resultado.getColumnIndexOrThrow("NOME") );
             in.email = resultado.getString( resultado.getColumnIndexOrThrow("EMAIL") );
             in.cpf = resultado.getString( resultado.getColumnIndexOrThrow("CPF") );

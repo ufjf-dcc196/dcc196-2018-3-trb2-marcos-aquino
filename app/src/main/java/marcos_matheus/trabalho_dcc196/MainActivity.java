@@ -20,6 +20,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import marcos_matheus.trabalho_dcc196.database.DadosOpenHelper;
+import marcos_matheus.trabalho_dcc196.dominio.entidades.Evento;
+import marcos_matheus.trabalho_dcc196.dominio.entidades.Inscrito;
+import marcos_matheus.trabalho_dcc196.dominio.repositorio.EventoRepositorio;
+import marcos_matheus.trabalho_dcc196.dominio.repositorio.InscritoRepositorio;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,40 +42,46 @@ public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout activityMain;
 
-    public static List<Inscrito> inscritos = new ArrayList<Inscrito>(){{
+    private EventoRepositorio eventoRepositorio;
+    private InscritoRepositorio inscritoRepositorio;
 
-        Inscrito in1 = new Inscrito("Fulano da Silva", "fulano@exemplo.com", "12312312311");
-        Inscrito in2 = new Inscrito("Leon S Kenedy", "revil@umbrella.com", "66622244488");
-        Inscrito in3 = new Inscrito("Tony Stark", "iron@man.com", "00000000000");
-        Inscrito in4 = new Inscrito("Fábio Assunção", "sexta@feira.com", "158473961pt");
+    private EventoAdapter eventoAdapter;
+    private InscritoAdapter inscritoAdapter;
 
-        add(in1);
-        add(in2);
-        add(in3);
-        add(in4);
-    }};
-
-    public static List<Evento> eventos = new ArrayList<Evento>(){{
-        Evento ev1 = new Evento("Curso X", "Charles Xavier", "12/12/2030" , "00:00" , "Exemplo de descrição.");
-        Evento ev2 = new Evento("Curso X", "Professor Girafales", "12/12/2030" , "00:00" , "Exemplo de descrição.");
-        Evento ev3 = new Evento("Curso X", "Professor Raimundo", "12/12/2030" , "00:00" , "Exemplo de descrição.");
-        Evento ev4 = new Evento("Curso X", "Ronaldinho", "12/12/2030" , "00:00" , "Exemplo de descrição.");
-
-        add(ev1);
-        add(ev2);
-        add(ev3);
-        add(ev4);
-
-        ev1.getInscritos().add(inscritos.get(1));
-        ev2.getInscritos().add(inscritos.get(1));
-        ev3.getInscritos().add(inscritos.get(1));
-        ev4.getInscritos().add(inscritos.get(1));
-
-        inscritos.get(1).getEventos().add(ev1);
-        inscritos.get(1).getEventos().add(ev1);
-        inscritos.get(1).getEventos().add(ev1);
-        inscritos.get(1).getEventos().add(ev1);
-    }};
+//    public static List<Inscrito> inscritos = new ArrayList<Inscrito>(){{
+//
+//        Inscrito in1 = new Inscrito("Fulano da Silva", "fulano@exemplo.com", "12312312311");
+//        Inscrito in2 = new Inscrito("Leon S Kenedy", "revil@umbrella.com", "66622244488");
+//        Inscrito in3 = new Inscrito("Tony Stark", "iron@man.com", "00000000000");
+//        Inscrito in4 = new Inscrito("Fábio Assunção", "sexta@feira.com", "158473961pt");
+//
+//        add(in1);
+//        add(in2);
+//        add(in3);
+//        add(in4);
+//    }};
+//
+//    public static List<Evento> eventos = new ArrayList<Evento>(){{
+//        Evento ev1 = new Evento("Curso X", "Charles Xavier", "12/12/2030" , "00:00" , "Exemplo de descrição.");
+//        Evento ev2 = new Evento("Curso X", "Professor Girafales", "12/12/2030" , "00:00" , "Exemplo de descrição.");
+//        Evento ev3 = new Evento("Curso X", "Professor Raimundo", "12/12/2030" , "00:00" , "Exemplo de descrição.");
+//        Evento ev4 = new Evento("Curso X", "Ronaldinho", "12/12/2030" , "00:00" , "Exemplo de descrição.");
+//
+//        add(ev1);
+//        add(ev2);
+//        add(ev3);
+//        add(ev4);
+//
+//        ev1.getInscritos().add(inscritos.get(1));
+//        ev2.getInscritos().add(inscritos.get(1));
+//        ev3.getInscritos().add(inscritos.get(1));
+//        ev4.getInscritos().add(inscritos.get(1));
+//
+//        inscritos.get(1).getEventos().add(ev1);
+//        inscritos.get(1).getEventos().add(ev1);
+//        inscritos.get(1).getEventos().add(ev1);
+//        inscritos.get(1).getEventos().add(ev1);
+//    }};
 
 
     @Override
@@ -105,49 +115,71 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+
+        lstEventos = (RecyclerView) findViewById(R.id.lstEventos);
+        lstEventos.setLayoutManager(new LinearLayoutManager(this));
+
+        eventoRepositorio = new EventoRepositorio(conexao);
+        List<Evento> dadosEvento = eventoRepositorio.buscarEventos();
+        eventoAdapter = new EventoAdapter(dadosEvento);
+        lstEventos.setAdapter(eventoAdapter);
 
         lstInscritos = (RecyclerView) findViewById(R.id.lstInscritos);
         lstInscritos.setLayoutManager(new LinearLayoutManager(this));
 
-        final ControleInscrito controle = new ControleInscrito(inscritos);
-        lstInscritos.setAdapter(controle);
-        controle.setOnParticipanteClickListener(new ControleInscrito.OnInscritoClickListener() {
-            @Override
-            public void onInscritoClick(View view, int position) {
-                Intent intentInscritoDados = new Intent(MainActivity.this, DadosParticipante.class);
-                intentInscritoDados.putExtra("posicao", position);
-                startActivity(intentInscritoDados);
-            }
-        });
-        controle.setOnParticipanteLongClickListener(new ControleInscrito.OnInscritoLongClickListener() {
-            @Override
-            public void onInscritoLongClickListener(View view, int position) {
-                inscritos.remove(position);
-                controle.notifyItemRemoved(position);
-            }
-        });
+        inscritoRepositorio = new InscritoRepositorio(conexao);
+        List<Inscrito> dadosInscrito = inscritoRepositorio.buscarInscritos();
+        inscritoAdapter = new InscritoAdapter(dadosInscrito);
+        lstInscritos.setAdapter(inscritoAdapter);
 
-        lstEventos = (RecyclerView) findViewById(R.id.lstEventos);
 
-        lstEventos.setLayoutManager(new LinearLayoutManager(this));
 
-        final ControleEvento eventoControle = new ControleEvento(eventos);
-        lstEventos.setAdapter(eventoControle);
-        eventoControle.setOnEventoClickListener(new ControleEvento.OnEventoClickListener() {
-            @Override
-            public void onEventoClick(View view, int position) {
-                Intent intentEventoDetalhe = new Intent(MainActivity.this, DadosEvento.class);
-                intentEventoDetalhe.putExtra("posicao", position);
-                startActivity(intentEventoDetalhe);
-            }
-        });
-        eventoControle.setOnEventoLongClickListener(new ControleEvento.OnEventoLongClickListener() {
-            @Override
-            public void onEventoLongClickListener(View view, int position) {
-                eventos.remove(position);
-                eventoControle.notifyItemRemoved(position);
-            }
-        });
+
+
+
+//        lstInscritos = (RecyclerView) findViewById(R.id.lstInscritos);
+//        lstInscritos.setLayoutManager(new LinearLayoutManager(this));
+//
+//        final ControleInscrito controle = new ControleInscrito(inscritos);
+//        lstInscritos.setAdapter(controle);
+//        controle.setOnParticipanteClickListener(new ControleInscrito.OnInscritoClickListener() {
+//            @Override
+//            public void onInscritoClick(View view, int position) {
+//                Intent intentInscritoDados = new Intent(MainActivity.this, DadosParticipante.class);
+//                intentInscritoDados.putExtra("posicao", position);
+//                startActivity(intentInscritoDados);
+//            }
+//        });
+//        controle.setOnParticipanteLongClickListener(new ControleInscrito.OnInscritoLongClickListener() {
+//            @Override
+//            public void onInscritoLongClickListener(View view, int position) {
+//                inscritos.remove(position);
+//                controle.notifyItemRemoved(position);
+//            }
+//        });
+//
+//        lstEventos = (RecyclerView) findViewById(R.id.lstEventos);
+//
+//        lstEventos.setLayoutManager(new LinearLayoutManager(this));
+//
+//        final ControleEvento eventoControle = new ControleEvento(eventos);
+//        lstEventos.setAdapter(eventoControle);
+//        eventoControle.setOnEventoClickListener(new ControleEvento.OnEventoClickListener() {
+//            @Override
+//            public void onEventoClick(View view, int position) {
+//                Intent intentEventoDetalhe = new Intent(MainActivity.this, DadosEvento.class);
+//                intentEventoDetalhe.putExtra("posicao", position);
+//                startActivity(intentEventoDetalhe);
+//            }
+//        });
+//        eventoControle.setOnEventoLongClickListener(new ControleEvento.OnEventoLongClickListener() {
+//            @Override
+//            public void onEventoLongClickListener(View view, int position) {
+//                eventos.remove(position);
+//                eventoControle.notifyItemRemoved(position);
+//            }
+//        });
     }
 
 

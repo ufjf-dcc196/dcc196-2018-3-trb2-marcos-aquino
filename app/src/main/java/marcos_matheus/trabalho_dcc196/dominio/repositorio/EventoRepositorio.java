@@ -106,7 +106,7 @@ public class EventoRepositorio {
 
             Evento ev = new Evento();
 
-            ev.codigo = resultado.getInt( resultado.getColumnIndexOrThrow("CODIGO") );
+//            ev.codigo = resultado.getInt( resultado.getColumnIndexOrThrow("CODIGO") );
             ev.titulo = resultado.getString( resultado.getColumnIndexOrThrow("TITULO") );
             ev.data = resultado.getString( resultado.getColumnIndexOrThrow("DATA") );
             ev.hora = resultado.getString( resultado.getColumnIndexOrThrow("HORA") );

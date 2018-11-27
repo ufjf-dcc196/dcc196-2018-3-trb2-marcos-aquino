@@ -65,17 +65,17 @@ public class CadastroParticipante extends AppCompatActivity {
 
                 Intent resultadoParticipante = new Intent();
 
-                String nome = edtNomeParticipante.getText().toString();
-                String email = edtEmailParticipante.getText().toString();
-                String cpf = edtCpfParticipante.getText().toString();
+//                String nome = edtNomeParticipante.getText().toString();
+//                String email = edtEmailParticipante.getText().toString();
+//                String cpf = edtCpfParticipante.getText().toString();
 
                 //if(validaCampos()) {
                   //  Toast.makeText(getApplicationContext(), "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
                     //finish();
                 //} else {
                 confirmarCadastroParticipante();
-                Toast.makeText(getApplicationContext(), "Inscrito com sucesso!", Toast.LENGTH_SHORT).show();
-                finish();
+//                Toast.makeText(getApplicationContext(), "Inscrito com sucesso!", Toast.LENGTH_SHORT).show();
+//                finish();
                 //}
             }
         });
@@ -119,6 +119,8 @@ public class CadastroParticipante extends AppCompatActivity {
             try {
 
                 inscritoRepositorio.inserirInscrito(inscrito);
+                Toast.makeText(getApplicationContext(), "Inscrito com sucesso!", Toast.LENGTH_LONG).show();
+                finish();
 
             }catch (SQLException ex){
 

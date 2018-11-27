@@ -80,8 +80,7 @@ public class CadastroEvento extends AppCompatActivity {
                 //}
                 //else {
                     confirmarCadastroEvento();
-                    Toast.makeText(getApplicationContext(), "Evento cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-                    finish();
+
                 //}
             }
         });
@@ -124,6 +123,8 @@ public class CadastroEvento extends AppCompatActivity {
             try {
 
                 eventoRepositorio.inserirEvento(evento);
+                Toast.makeText(getApplicationContext(), "Evento cadastrado com sucesso!", Toast.LENGTH_LONG).show();
+                finish();
                 //finish();
 
             }catch (SQLException ex){
