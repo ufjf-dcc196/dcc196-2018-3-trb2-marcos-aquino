@@ -99,7 +99,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent it = new Intent(MainActivity.this, CadastroEvento.class);
-                startActivity(it);
+                startActivityForResult(it, 0);
+
+//                Intent it = new Intent(MainActivity.this, CadastroEvento.class);
+//                startActivity(it);
 
             }
         });
@@ -206,13 +209,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    public void cadastrarEventro(View view){
-
-        Intent it = new Intent(MainActivity.this, CadastroEvento.class);
-
-        startActivityForResult(it, 0);
-    }
+//
+//    public void cadastrarEventro(View view){
+//
+//        Intent it = new Intent(MainActivity.this, CadastroEvento.class);
+//
+//        startActivityForResult(it, 0);
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
