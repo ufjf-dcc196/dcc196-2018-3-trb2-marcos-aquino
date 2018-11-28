@@ -24,6 +24,7 @@
 
     <string name="cadastrar_evento">Cadastrar evento</string>
     <string name="cancela_cadastro_evento">Cancelar</string>
+    <string name="exclui_cadastro_evento">Apagar</string>
 
     // cadastro de participante
     <string name="nome_participante">Nome:</string>

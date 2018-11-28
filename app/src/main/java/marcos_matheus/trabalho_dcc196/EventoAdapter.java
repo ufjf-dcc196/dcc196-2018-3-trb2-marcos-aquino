@@ -76,7 +76,7 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
                         Toast.makeText(context, "Evento " + evento.titulo + " selecionado.", Toast.LENGTH_SHORT).show();
 
 
-                        Intent it = new Intent(context, DadosEvento.class);
+                        Intent it = new Intent(context, CadastroEvento.class);
                         it.putExtra("EVENTO", evento);
                         ((AppCompatActivity)context).startActivityForResult(it, 0);
 

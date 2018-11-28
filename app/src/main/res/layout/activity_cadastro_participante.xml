@@ -101,18 +101,18 @@
         android:text="@string/cadastrar_participante"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btCancelar"
+        app:layout_constraintStart_toEndOf="@+id/btExcluir"
         app:layout_constraintTop_toBottomOf="@+id/edtCpfParticipante" />
 
     <Button
-        android:id="@+id/btCancelar"
+        android:id="@+id/btExcluir"
         android:layout_width="127dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/cancela_cadastro_participante"
+        android:layout_marginBottom="35dp"
+        android:text="@string/exclui_cadastro_evento"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtCpfParticipante" />

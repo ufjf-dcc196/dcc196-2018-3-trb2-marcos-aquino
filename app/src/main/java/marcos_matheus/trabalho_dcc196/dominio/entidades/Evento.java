@@ -10,4 +10,8 @@ public class Evento implements Serializable {
     public String data;
     public String hora;
     public String descricao;
+
+    public Evento(){
+        codigo = 0;
+    }
 }

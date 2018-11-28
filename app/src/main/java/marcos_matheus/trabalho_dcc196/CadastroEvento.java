@@ -1,6 +1,5 @@
 package marcos_matheus.trabalho_dcc196;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.SQLException;
@@ -10,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,12 +18,11 @@ import android.widget.Toast;
 import marcos_matheus.trabalho_dcc196.database.DadosOpenHelper;
 import marcos_matheus.trabalho_dcc196.dominio.entidades.Evento;
 import marcos_matheus.trabalho_dcc196.dominio.repositorio.EventoRepositorio;
-import marcos_matheus.trabalho_dcc196.dominio.repositorio.InscritoRepositorio;
 
 public class CadastroEvento extends AppCompatActivity {
 
     Button btCadastrarEvento;
-    Button btCancelar;
+    Button btExcluir;
 
     EditText edtTituloEvento;
     EditText edtDataEvento;
@@ -45,17 +44,24 @@ public class CadastroEvento extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_evento);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        edtTituloEvento = (EditText) findViewById(R.id.edtTituloEvento);
-        edtDataEvento = (EditText) findViewById(R.id.edtDataEvento);
-        edtHorarioEvento = (EditText) findViewById(R.id.edtHorarioEvento);
-        edtFacilitadorEvento = (EditText) findViewById(R.id.edtFacilitadorEvento);
-        edtDescricaoEvento = (EditText) findViewById(R.id.edtDescricaoEvento);
 
-        btCancelar = (Button) findViewById(R.id.btCancelar);
-        btCancelar.setOnClickListener(new View.OnClickListener() {
+        edtTituloEvento = (EditText) findViewById(R.id.edtTituloCadEvento);
+        edtDataEvento = (EditText) findViewById(R.id.edtDataCadEvento);
+        edtHorarioEvento = (EditText) findViewById(R.id.edtHorarioCadEvento);
+        edtFacilitadorEvento = (EditText) findViewById(R.id.edtFacilitadorCadEvento);
+        edtDescricaoEvento = (EditText) findViewById(R.id.edtDescricaoCadEvento);
+
+
+
+        btExcluir = (Button) findViewById(R.id.btExcluir);
+        btExcluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                eventoRepositorio.excluirEvento(evento.codigo);
+                Toast.makeText(getApplicationContext(), "Evento excluído", Toast.LENGTH_SHORT).show();
 
                 finish();
             }
@@ -66,7 +72,7 @@ public class CadastroEvento extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent resultadoEvento = new Intent();
+                //Intent resultadoEvento = new Intent();
 
 //                String titulo = edtTituloEvento.getText().toString();
 //                String descricao = edtDescricaoEvento.getText().toString();
@@ -88,6 +94,30 @@ public class CadastroEvento extends AppCompatActivity {
         actCadEvento = (ConstraintLayout)findViewById(R.id.actCadEvento);
 
         criarConexao();
+        verificaParametro();
+    }
+
+    private void verificaParametro() {    // verifica parametros recebidos
+
+        Bundle bundleEvento = getIntent().getExtras();
+
+        if ((bundleEvento != null) && (bundleEvento.containsKey("EVENTO"))) {
+
+            evento = (Evento) bundleEvento.getSerializable("EVENTO");
+
+            edtTituloEvento.setText(evento.titulo);
+            edtDataEvento.setText(evento.data);
+            edtHorarioEvento.setText(evento.hora);
+            edtFacilitadorEvento.setText(evento.facilitador);
+            edtDescricaoEvento.setText(evento.descricao);
+
+//            txtTituloAtual.setText(evento.titulo);
+//            txtFacilitadorAtual.setText(evento.facilitador);
+//            txtDataAtual.setText(evento.data);
+//            txtHorarioAtual.setText(evento.hora);
+//            txtDescricaoAtual.setText(evento.descricao);
+
+        }
     }
 
     private void criarConexao(){
@@ -114,18 +144,39 @@ public class CadastroEvento extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        switch (id){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void confirmarCadastroEvento(){
 
-        evento = new Evento();
+        //evento = new Evento();
 
         if(!validaCampos()){
 
             try {
 
-                eventoRepositorio.inserirEvento(evento);
-                Toast.makeText(getApplicationContext(), "Evento cadastrado com sucesso!", Toast.LENGTH_LONG).show();
-                finish();
-                //finish();
+                if(evento.codigo == 0){
+
+                    eventoRepositorio.inserirEvento(evento);
+                    Toast.makeText(getApplicationContext(), "Evento cadastrado com sucesso!", Toast.LENGTH_LONG).show();
+                    finish();
+                    //finish();
+                }else {
+                    eventoRepositorio.alterarEvento(evento);
+                    Toast.makeText(getApplicationContext(), "Evento editado com sucesso!", Toast.LENGTH_LONG).show();
+                    finish();
+                }
 
             }catch (SQLException ex){
 

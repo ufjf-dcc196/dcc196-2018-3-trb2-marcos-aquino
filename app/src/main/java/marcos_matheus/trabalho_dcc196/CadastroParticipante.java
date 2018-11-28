@@ -1,6 +1,5 @@
 package marcos_matheus.trabalho_dcc196;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.SQLException;
@@ -49,7 +48,7 @@ public class CadastroParticipante extends AppCompatActivity {
         edtEmailParticipante = (EditText)findViewById(R.id.edtEmailParticipante);
         edtCpfParticipante = (EditText)findViewById(R.id.edtCpfParticipante);
 
-        btCancelar = (Button) findViewById(R.id.btCancelar);
+        btCancelar = (Button) findViewById(R.id.btExcluir);
         btCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -8,6 +8,8 @@
 //import android.widget.EditText;
 //import android.widget.Toast;
 //
+//import marcos_matheus.trabalho_dcc196.dominio.entidades.Evento;
+//
 //public class EditarDadosEvento extends AppCompatActivity {
 //
 //    private Button btnCancela;
@@ -30,22 +32,12 @@
 //        edtDataEditar = (EditText) findViewById(R.id.edtDataEditar);
 //        edtHorarioEditar = (EditText) findViewById(R.id.edtHorarioEditar);
 //
-//        Bundle bundleDetalhes = getIntent().getExtras();
-//        final int posicao = bundleDetalhes.getInt("posicao");
-//        Evento e = MainActivity.eventos.get(posicao);
-//        edtTituloEditar.setText(e.getTitulo());
-//        edtFacilitadorEditar.setText(e.getFacilitador());
-//        edtDescricaoEditar.setText(e.getDescricao());
-//        edtDataEditar.setText(e.getData());
-//        edtHorarioEditar.setText(e.getHora());
 //
 //        btnCancela = (Button) findViewById(R.id.btCancelaEdicaoEvento);
 //        btnCancela.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent intent = new Intent(EditarDadosEvento.this, DadosEvento.class);
-//                intent.putExtra("posicao", posicao);
-//                startActivity(intent);
+//                finish();
 //            }
 //        });
 //
@@ -53,8 +45,10 @@
 //        btnConfirma.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
+//
 //                Intent resultadoEventoEditar = new Intent(EditarDadosEvento.this, DadosEvento.class);
-//                resultadoEventoEditar.putExtra("posicao", posicao);
+//                resultadoEventoEditar.putExtra("EVENTO", resultadoEventoEditar);
+//
 //
 //                String titulo = edtTituloEditar.getText().toString();
 //                String facilitador = edtFacilitadorEditar.getText().toString();
@@ -62,7 +56,7 @@
 //                String data = edtDataEditar.getText().toString();
 //                String hora = edtHorarioEditar.getText().toString();
 //
-//                if(titulo.equals("") || descricao.equals("") || facilitador.equals("") || data.equals("") || hora.equals("")) {
+//                if (titulo.equals("") || descricao.equals("") || facilitador.equals("") || data.equals("") || hora.equals("")) {
 //                    Toast.makeText(getApplicationContext(), "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
 //                    startActivity(resultadoEventoEditar);
 //                } else {
@@ -77,6 +71,22 @@
 //                }
 //            }
 //        });
+//    }
+//
+//    private void verificaParametro() {
+//
+//        Bundle bundleEvento = getIntent().getExtras();
+//
+//        if ((bundleEvento != null) && (bundleEvento.containsKey("EVENTO"))) {
+//
+//            Evento evento = (Evento) bundleEvento.getSerializable("EVENTO");
+//            edtTituloEditar.setText(evento.titulo);
+//            edtFacilitadorEditar.setText(evento.facilitador);
+//            edtDataEditar.setText(evento.data);
+//            edtHorarioEditar.setText(evento.hora);
+//            edtDescricaoEditar.setText(evento.descricao);
+//
+//        }
 //    }
 //}
 //

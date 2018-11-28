@@ -92,7 +92,7 @@ public class EventoRepositorio {
         List<Evento> eventos = new ArrayList<Evento>();
 
         StringBuilder sql = new StringBuilder();
-        sql.append(" SELECT TITULO, DATA, HORA, FACILITADOR, DESCRICAO ");
+        sql.append(" SELECT CODIGO, TITULO, DATA, HORA, FACILITADOR, DESCRICAO ");
         sql.append(" FROM EVENTOS ");
 
 
@@ -106,7 +106,7 @@ public class EventoRepositorio {
 
             Evento ev = new Evento();
 
-//            ev.codigo = resultado.getInt( resultado.getColumnIndexOrThrow("CODIGO") );
+            ev.codigo = resultado.getInt( resultado.getColumnIndexOrThrow("CODIGO") );
             ev.titulo = resultado.getString( resultado.getColumnIndexOrThrow("TITULO") );
             ev.data = resultado.getString( resultado.getColumnIndexOrThrow("DATA") );
             ev.hora = resultado.getString( resultado.getColumnIndexOrThrow("HORA") );

@@ -63,7 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtFacilitadorEvento" />
 
     <EditText
-        android:id="@+id/edtTituloEvento"
+        android:id="@+id/edtTituloCadEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edtFacilitadorEvento"
+        android:id="@+id/edtFacilitadorCadEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -92,10 +92,10 @@
         android:text="@string/edt_facilitador"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtTituloEvento"
-        app:layout_constraintTop_toBottomOf="@+id/edtHorarioEvento" />
+        app:layout_constraintTop_toBottomOf="@+id/edtHorarioCadEvento" />
 
     <EditText
-        android:id="@+id/edtDataEvento"
+        android:id="@+id/edtDataCadEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -108,10 +108,10 @@
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtTituloEvento"
-        app:layout_constraintTop_toBottomOf="@+id/edtTituloEvento" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTituloCadEvento" />
 
     <EditText
-        android:id="@+id/edtHorarioEvento"
+        android:id="@+id/edtHorarioCadEvento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -124,10 +124,10 @@
         android:inputType="time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtTituloEvento"
-        app:layout_constraintTop_toBottomOf="@+id/edtDataEvento" />
+        app:layout_constraintTop_toBottomOf="@+id/edtDataCadEvento" />
 
     <EditText
-        android:id="@+id/edtDescricaoEvento"
+        android:id="@+id/edtDescricaoCadEvento"
         android:layout_width="214dp"
         android:layout_height="106dp"
         android:layout_marginStart="8dp"
@@ -140,7 +140,7 @@
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtTituloEvento"
-        app:layout_constraintTop_toBottomOf="@+id/edtFacilitadorEvento" />
+        app:layout_constraintTop_toBottomOf="@+id/edtFacilitadorCadEvento" />
 
     <Button
         android:id="@+id/btCadastrarEvento"
@@ -152,21 +152,21 @@
         android:layout_marginBottom="32dp"
         android:text="@string/cadastrar_evento"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/edtDescricaoEvento"
-        app:layout_constraintStart_toEndOf="@+id/btCancelar"
-        app:layout_constraintTop_toBottomOf="@+id/edtDescricaoEvento" />
+        app:layout_constraintEnd_toEndOf="@+id/edtDescricaoCadEvento"
+        app:layout_constraintStart_toEndOf="@+id/btExcluir"
+        app:layout_constraintTop_toBottomOf="@+id/edtDescricaoCadEvento" />
 
     <Button
-        android:id="@+id/btCancelar"
+        android:id="@+id/btExcluir"
         android:layout_width="106dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
-        android:text="@string/cancela_cadastro_evento"
+        android:text="@string/exclui_cadastro_evento"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtDescricaoEvento" />
+        app:layout_constraintTop_toBottomOf="@+id/edtDescricaoCadEvento" />
 
 </android.support.constraint.ConstraintLayout>

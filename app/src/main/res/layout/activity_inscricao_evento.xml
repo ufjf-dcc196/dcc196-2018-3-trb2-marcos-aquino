@@ -14,12 +14,12 @@
         android:layout_marginBottom="8dp"
         android:text="@string/confirma_inscricao"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/edtDescricaoEvento"
-        app:layout_constraintStart_toStartOf="@+id/edtDescricaoEvento"
-        app:layout_constraintTop_toBottomOf="@+id/edtDescricaoEvento" />
+        app:layout_constraintEnd_toEndOf="@+id/edtDescricaoCadEvento"
+        app:layout_constraintStart_toStartOf="@+id/edtDescricaoCadEvento"
+        app:layout_constraintTop_toBottomOf="@+id/edtDescricaoCadEvento" />
 
     <EditText
-        android:id="@+id/edtDescricaoEvento"
+        android:id="@+id/edtDescricaoCadEvento"
         android:layout_width="0dp"
         android:layout_height="77dp"
         android:layout_marginTop="16dp"
@@ -33,12 +33,12 @@
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
         android:scrollHorizontally="false"
-        app:layout_constraintEnd_toEndOf="@+id/edtFacilitadorEvento"
-        app:layout_constraintStart_toStartOf="@+id/edtFacilitadorEvento"
-        app:layout_constraintTop_toBottomOf="@+id/edtHorarioEvento" />
+        app:layout_constraintEnd_toEndOf="@+id/edtFacilitadorCadEvento"
+        app:layout_constraintStart_toStartOf="@+id/edtFacilitadorCadEvento"
+        app:layout_constraintTop_toBottomOf="@+id/edtHorarioCadEvento" />
 
     <EditText
-        android:id="@+id/edtHorarioEvento"
+        android:id="@+id/edtHorarioCadEvento"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -46,12 +46,12 @@
         android:ems="10"
         android:focusable="false"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/edtDataEvento"
-        app:layout_constraintStart_toStartOf="@+id/edtDataEvento"
-        app:layout_constraintTop_toBottomOf="@+id/edtDataEvento" />
+        app:layout_constraintEnd_toEndOf="@+id/edtDataCadEvento"
+        app:layout_constraintStart_toStartOf="@+id/edtDataCadEvento"
+        app:layout_constraintTop_toBottomOf="@+id/edtDataCadEvento" />
 
     <EditText
-        android:id="@+id/edtDataEvento"
+        android:id="@+id/edtDataCadEvento"
         android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -66,10 +66,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtFacilitadorEvento" />
+        app:layout_constraintTop_toBottomOf="@+id/edtFacilitadorCadEvento" />
 
     <EditText
-        android:id="@+id/edtTituloEvento"
+        android:id="@+id/edtTituloCadEvento"
         android:layout_width="255dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -86,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtEventosDisponiveis" />
 
     <EditText
-        android:id="@+id/edtFacilitadorEvento"
+        android:id="@+id/edtFacilitadorCadEvento"
         android:layout_width="255dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -94,10 +94,10 @@
         android:ems="10"
         android:focusable="false"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/edtTituloEvento"
+        app:layout_constraintEnd_toEndOf="@+id/edtTituloCadEvento"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edtTituloEvento"
-        app:layout_constraintTop_toBottomOf="@+id/edtTituloEvento" />
+        app:layout_constraintStart_toStartOf="@+id/edtTituloCadEvento"
+        app:layout_constraintTop_toBottomOf="@+id/edtTituloCadEvento" />
 
     <Button
         android:id="@+id/btVoltarInscricao"
