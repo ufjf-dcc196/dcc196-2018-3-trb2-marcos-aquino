@@ -1,6 +1,8 @@
 package marcos_matheus.trabalho_dcc196.dominio.entidades;
 
-public class Evento {
+import java.io.Serializable;
+
+public class Evento implements Serializable {
 
     public int codigo;
     public String titulo;

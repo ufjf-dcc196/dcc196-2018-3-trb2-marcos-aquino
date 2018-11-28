@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtMainEventos" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/lstInscritos"
+        android:id="@+id/lstInscritosAtual"
         android:layout_width="0dp"
         android:layout_height="117dp"
         android:layout_marginTop="16dp"

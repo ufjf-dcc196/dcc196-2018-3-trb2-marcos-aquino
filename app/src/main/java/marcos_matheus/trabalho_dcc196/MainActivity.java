@@ -1,6 +1,5 @@
 package marcos_matheus.trabalho_dcc196;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.SQLException;
@@ -14,9 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import marcos_matheus.trabalho_dcc196.database.DadosOpenHelper;
@@ -27,8 +24,8 @@ import marcos_matheus.trabalho_dcc196.dominio.repositorio.InscritoRepositorio;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int REQUEST_PARTICIPANTE = 1;
-    public static final int REQUEST_EVENTO = 2;
+//    public static final int REQUEST_PARTICIPANTE = 1;
+//    public static final int REQUEST_EVENTO = 2;
 
     private Button btNovoEvento;
     private Button btNovoInscrito;
@@ -129,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         eventoAdapter = new EventoAdapter(dadosEvento);
         lstEventos.setAdapter(eventoAdapter);
 
-        lstInscritos = (RecyclerView) findViewById(R.id.lstInscritos);
+        lstInscritos = (RecyclerView) findViewById(R.id.lstInscritosAtual);
         lstInscritos.setLayoutManager(new LinearLayoutManager(this));
 
         inscritoRepositorio = new InscritoRepositorio(conexao);
@@ -210,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 //
-//    public void cadastrarEventro(View view){
+//    public void cadastrarEvento(View view){
 //
 //        Intent it = new Intent(MainActivity.this, CadastroEvento.class);
 //

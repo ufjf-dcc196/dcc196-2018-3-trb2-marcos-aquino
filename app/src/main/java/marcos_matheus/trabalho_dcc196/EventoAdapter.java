@@ -1,11 +1,15 @@
 package marcos_matheus.trabalho_dcc196;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -28,7 +32,7 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
 
         View view = layoutInflater.inflate(R.layout.linha_eventos, parent, false);
 
-        ViewHolderEvento holderEvento = new ViewHolderEvento(view);
+        ViewHolderEvento holderEvento = new ViewHolderEvento(view, parent.getContext());
 
         return holderEvento;
     }
@@ -56,11 +60,29 @@ public class EventoAdapter extends RecyclerView.Adapter<EventoAdapter.ViewHolder
         public TextView txtTitulo;
         public TextView txtData;
 
-        public ViewHolderEvento(@NonNull View itemView) {
+        public ViewHolderEvento(@NonNull View itemView, final Context context) {
             super(itemView);
 
             txtTitulo = (TextView) itemView.findViewById(R.id.txtTituloEvento);
             txtData = (TextView) itemView.findViewById(R.id.txtDataEvento);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    if(dadosEvento.size() > 0){
+
+                        Evento evento = dadosEvento.get(getLayoutPosition());
+                        Toast.makeText(context, "Evento " + evento.titulo + " selecionado.", Toast.LENGTH_SHORT).show();
+
+
+                        Intent it = new Intent(context, DadosEvento.class);
+                        it.putExtra("EVENTO", evento);
+                        ((AppCompatActivity)context).startActivityForResult(it, 0);
+
+                    }
+                }
+            });
         }
     }
 }
